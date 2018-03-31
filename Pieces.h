@@ -34,28 +34,30 @@
 */
 
 #pragma once
+#include "stdafx.h"
+#include "stdint.h"
 
-enum Tetromino {L, J, Z, S, T, O, I};
+enum Block {L, J, Z, S, T, O, I};
 
-class Tetrimos {
+class Tetromino {
 
 public:
-	int getTetromino(Tetromino t, int rotation) {
+	uint16_t getTetromino(Block t, int rotation) {
 		int index = 0;
 		switch (t) {
-			case L: index = 0;
-			case J: index = 1;
-			case Z: index = 2;
-			case S: index = 3;
-			case T: index = 4;
-			case O: index = 5;
-			case I: index = 6;
+			case L: index = 0; break;
+			case J: index = 1; break;
+			case Z: index = 2; break;
+			case S: index = 3; break;
+			case T: index = 4; break;
+			case O: index = 5; break;
+			case I: index = 6; break;
 		}
 		return TetrominosROM[index * 4 + rotation % 4];
 	}
 
 private:
-	int TetrominosROM[28] = {
+	uint16_t TetrominosROM[28] = {
 
 		// Tertromino L
 		0x088C, 0x002E, 0x0622, 0x0E80,
